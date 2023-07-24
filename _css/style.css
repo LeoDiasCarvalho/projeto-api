@@ -27,8 +27,6 @@ body{
     border: #161a1d solid 1px;
 }
 
-
-
 .form input{
     width: 250px;
     height: 30px;
@@ -39,7 +37,7 @@ body{
     font-size: 1em;
 }
 
-.btn{
+button{
     width: 100px;
     height: 25px;
     border-radius: 5px;

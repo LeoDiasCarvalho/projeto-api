@@ -6,20 +6,21 @@
     <title>Projeto-API</title>
 
     <link rel="stylesheet" href="/_css/style.css">
+    <script src="/_js/script.js" defer></script>
 
 </head>
 <body>
     <div class="box">
         <h1 class="titulo">Cadastro de Usuário</h1>
-        <form action="" class="form">   
-            <input type="text" name="nome" id="txtNome" placeholder="Nome">
-            <input type="text" name="email" id="txtEmail" placeholder="Email">
-            <input type="password" name="senha" id="txtSenha" placeholder="Senha">
-            <input type="tel" name="telefone" id="txtTelefone" placeholder="Telefone">
-            <button class="btn">Cadastrar</button>
+        <form action="" class="form" autocomplete="on">   
+            <input type="text" class="nome" name="nome" placeholder="Nome" autocomplete="on">
+            <input type="text" class="email" name="email" placeholder="Email" autocomplete="on">
+            <input type="password" class="senha" name="senha" placeholder="Senha" autocomplete="on">
+            <input type="tel" class="telefone" name="telefone" placeholder="Telefone" autocomplete="on">
+            <button>Cadastrar</button>
 
         </form>
     </div>
-    
+
 </body>
 </html>
