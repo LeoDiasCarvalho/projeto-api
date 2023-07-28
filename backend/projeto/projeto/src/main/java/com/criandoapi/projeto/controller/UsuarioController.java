@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,13 @@ public class UsuarioController {
 	//Método para salvar um usuário no banco
 	@PostMapping
 	public Usuario save(@RequestBody Usuario usuario) {
+		Usuario usuarioNovo = dao.save(usuario);
+		return usuarioNovo;
+	}
+	
+	//Método para alterar um usuário já existente no banco
+	@PutMapping
+	public Usuario update(@RequestBody Usuario usuario) {
 		Usuario usuarioNovo = dao.save(usuario);
 		return usuarioNovo;
 	}
