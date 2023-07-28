@@ -1,9 +1,12 @@
 package com.criandoapi.projeto.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,5 +45,11 @@ public class UsuarioController {
 	}
 	
 	
-
+	//Método para excluir um usuário do banco
+	@DeleteMapping("/{id}")
+	public Optional<Usuario> delete(@PathVariable Integer id) {
+		Optional<Usuario> usuario = dao.findById(id);
+		dao.deleteById(id);
+		return usuario;
+	}
 }
