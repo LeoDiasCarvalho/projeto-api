@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,31 +28,30 @@ public class UsuarioController {
 	
 	//Método para retornar todos os usuário do banco de dados
 	@GetMapping
-	public List<Usuario> findAll() {
-
-		return (List<Usuario>) dao.findAll();
+	public ResponseEntity<List<Usuario>> findAll() {
+		List<Usuario> list = (List<Usuario>) dao.findAll();
+		return ResponseEntity.status(200).body(list);
 	}
 	
 	//Método para salvar um usuário no banco
 	@PostMapping
-	public Usuario save(@RequestBody Usuario usuario) {
-		Usuario usuarioNovo = dao.save(usuario);
-		return usuarioNovo;
+	public ResponseEntity<Usuario> save(@RequestBody Usuario usuario) {
+		Usuario usuarioNovo =  dao.save(usuario);
+		return ResponseEntity.status(201).body(usuarioNovo);
 	}
 	
 	//Método para alterar um usuário já existente no banco
 	@PutMapping
-	public Usuario update(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario) {
 		Usuario usuarioNovo = dao.save(usuario);
-		return usuarioNovo;
+		return ResponseEntity.status(201).body(usuarioNovo);
 	}
 	
 	
 	//Método para excluir um usuário do banco
 	@DeleteMapping("/{id}")
-	public Optional<Usuario> delete(@PathVariable Integer id) {
-		Optional<Usuario> usuario = dao.findById(id);
+	public ResponseEntity<?> delete(@PathVariable Integer id) {
 		dao.deleteById(id);
-		return usuario;
+		return ResponseEntity.status(204).build();
 	}
 }
